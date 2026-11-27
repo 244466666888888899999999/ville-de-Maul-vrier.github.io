@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Découvrez Cholet Agglomération : son territoire, ses communes et ses principales missions au service des habitants.">
+  <meta name="theme-color" content="#174a3b">
+  <title>Cholet Agglomération — un territoire, 26 communes</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --forest: #174a3b;
+      --forest-dark: #10372d;
+      --lime: #d3ed9b;
+      --ink: #1d2b26;
+      --muted: #596862;
+      --paper: #f7f8f3;
+      --white: #fff;
+      --line: #e2e8df;
+      --radius: 1.25rem;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); line-height: 1.65; }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid #e29a42; outline-offset: 4px; }
+    .skip-link { position: absolute; left: 1rem; top: -5rem; z-index: 5; padding: .7rem 1rem; background: white; }
+    .skip-link:focus { top: 1rem; }
+    header { background: var(--forest-dark); color: white; }
+    .nav { width: min(1120px, calc(100% - 2.5rem)); margin: auto; min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .brand { display: flex; align-items: center; gap: .75rem; font-weight: 750; text-decoration: none; letter-spacing: .01em; }
+    .brand-mark { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50% 50% 50% 12%; background: var(--lime); color: var(--forest-dark); font-size: 1.2rem; }
+    nav { display: flex; gap: 1.35rem; }
+    nav a { color: #e6eee9; font-size: .94rem; text-decoration: none; }
+    nav a:hover { color: var(--lime); }
+    .hero { color: white; background: radial-gradient(ellipse at 82% 18%, #41765c 0, transparent 34%), linear-gradient(130deg, var(--forest-dark), var(--forest)); }
+    .hero-inner { width: min(1120px, calc(100% - 2.5rem)); margin: auto; padding: clamp(4rem, 9vw, 7.5rem) 0 5rem; }
+    .eyebrow { color: var(--lime); font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { max-width: 760px; margin: .7rem 0 1rem; font-size: clamp(2.6rem, 7vw, 5.3rem); line-height: 1.02; letter-spacing: -.055em; }
+    .hero p { max-width: 660px; margin: 0; color: #e0ebe4; font-size: clamp(1.05rem, 2vw, 1.25rem); }
+    .hero-link { display: inline-flex; align-items: center; gap: .55rem; margin-top: 1.8rem; padding: .8rem 1.15rem; border-radius: 999px; background: var(--lime); color: var(--forest-dark); font-weight: 750; text-decoration: none; }
+    .hero-link:hover { background: white; }
+    main { width: min(1120px, calc(100% - 2.5rem)); margin: auto; }
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: -2rem; position: relative; }
+    .fact { padding: 1.35rem 1.5rem; border: 1px solid var(--line); border-radius: var(--radius); background: white; box-shadow: 0 10px 30px #173a2610; }
+    .fact strong { display: block; color: var(--forest); font-size: 1.8rem; line-height: 1.2; }
+    .fact span { color: var(--muted); font-size: .92rem; }
+    section { padding: 5rem 0 0; scroll-margin-top: 2rem; }
+    .section-heading { max-width: 700px; margin-bottom: 1.7rem; }
+    .section-heading h2 { margin: 0 0 .45rem; color: var(--forest-dark); font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.15; letter-spacing: -.035em; }
+    .section-heading p { margin: 0; color: var(--muted); }
+    .mission-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .mission { padding: 1.4rem; border: 1px solid var(--line); border-radius: var(--radius); background: white; }
+    .mission-icon { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: .85rem; background: #eaf2df; font-size: 1.25rem; }
+    .mission h3 { margin: .9rem 0 .35rem; color: var(--forest-dark); font-size: 1.05rem; }
+    .mission p { margin: 0; color: var(--muted); font-size: .94rem; }
+    .territory { display: grid; grid-template-columns: .8fr 1.2fr; gap: 2.5rem; padding: 2rem; border-radius: var(--radius); background: #eaf0e7; }
+    .territory h2 { margin: 0 0 .6rem; color: var(--forest-dark); font-size: 1.8rem; line-height: 1.2; }
+    .territory p { margin: .5rem 0; color: #40534a; }
+    .communes { display: flex; flex-wrap: wrap; align-content: start; gap: .55rem; }
+    .communes span { padding: .38rem .72rem; border: 1px solid #d5e0d1; border-radius: 999px; background: #fff; color: #30453b; font-size: .88rem; }
+    .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center; padding: 2rem; border-radius: var(--radius); background: var(--forest); color: white; }
+    .contact h2 { margin: 0 0 .4rem; font-size: 1.8rem; }
+    .contact p { margin: 0; color: #e0ebe4; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: .75rem; }
+    .contact-links a { display: inline-block; padding: .7rem 1rem; border: 1px solid #a9c5b3; border-radius: 999px; color: white; font-weight: 700; text-decoration: none; }
+    .contact-links a:hover { background: white; color: var(--forest-dark); }
+    .sources { padding: 2.5rem 0 4rem; color: var(--muted); font-size: .86rem; }
+    .sources h2 { margin-bottom: .4rem; color: var(--forest-dark); font-size: 1rem; }
+    .sources ul { margin: .4rem 0; padding-left: 1.2rem; }
+    .sources a { color: var(--forest); }
+    footer { padding: 1.2rem; background: var(--forest-dark); color: #d9e5dd; text-align: center; font-size: .88rem; }
+    @media (max-width: 720px) {
+      .nav { align-items: flex-start; flex-direction: column; padding: 1rem 0; }
+      nav { flex-wrap: wrap; gap: .5rem 1rem; }
+      .facts, .mission-grid { grid-template-columns: 1fr; }
+      .territory, .contact { grid-template-columns: 1fr; }
+      section { padding-top: 3.5rem; }
+      .territory, .contact { padding: 1.4rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header>
+    <div class="nav">
+      <a class="brand" href="#accueil" aria-label="Cholet Agglomération, accueil">
+        <span class="brand-mark" aria-hidden="true">C</span>
+        <span>Cholet Agglomération</span>
+      </a>
+      <nav aria-label="Navigation principale">
+        <a href="#decouvrir">Découvrir</a>
+        <a href="#missions">Nos missions</a>
+        <a href="#communes">Les communes</a>
+        <a href="#liens">Liens utiles</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero" id="accueil">
+    <div class="hero-inner">
+      <div class="eyebrow">Maine-et-Loire · Pays de la Loire</div>
+      <h1>Un territoire,<br>26 communes.</h1>
+      <p>Cholet Agglomération rassemble les communes du Choletais et agit au quotidien pour aménager un territoire vivant, solidaire et durable.</p>
+      <a class="hero-link" href="#decouvrir">Découvrir l’Agglomération <span aria-hidden="true">↓</span></a>
+    </div>
+  </div>
+
+  <main id="contenu">
+    <div class="facts" aria-label="Quelques repères">
+      <div class="fact"><strong>26</strong><span>communes membres</span></div>
+      <div class="fact"><strong>108&nbsp;379</strong><span>habitants · recensement 2022</span></div>
+      <div class="fact"><strong>Cholet</strong><span>ville-centre et siège de l’Agglomération</span></div>
+    </div>
+
+    <section id="decouvrir">
+      <div class="section-heading">
+        <h2>Un territoire qui se construit ensemble</h2>
+        <p>Cholet Agglomération est une communauté d’agglomération située au sud-ouest du Maine-et-Loire. Elle coordonne des services et des projets qui dépassent les limites d’une seule commune, en lien avec les habitants, les entreprises et les associations.</p>
+      </div>
+    </section>
+
+    <section id="missions">
+      <div class="section-heading">
+        <h2>Des missions au service du quotidien</h2>
+        <p>L’intercommunalité porte des compétences et des actions communes pour améliorer la vie dans l’ensemble du territoire.</p>
+      </div>
+      <div class="mission-grid">
+        <article class="mission">
+          <span class="mission-icon" aria-hidden="true">⌂</span>
+          <h3>Aménagement et habitat</h3>
+          <p>Planifier le développement du territoire, accompagner l’habitat et organiser les grands équilibres locaux.</p>
+        </article>
+        <article class="mission">
+          <span class="mission-icon" aria-hidden="true">↗</span>
+          <h3>Économie et emploi</h3>
+          <p>Soutenir l’activité économique, l’emploi et l’attractivité du Choletais.</p>
+        </article>
+        <article class="mission">
+          <span class="mission-icon" aria-hidden="true">♻</span>
+          <h3>Environnement et déchets</h3>
+          <p>Agir pour la transition écologique, la gestion des déchets et la préservation des ressources.</p>
+        </article>
+        <article class="mission">
+          <span class="mission-icon" aria-hidden="true">≈</span>
+          <h3>Eau et assainissement</h3>
+          <p>Contribuer à la gestion des services liés à l’eau et à l’assainissement sur le territoire.</p>
+        </article>
+        <article class="mission">
+          <span class="mission-icon" aria-hidden="true">⇄</span>
+          <h3>Mobilités</h3>
+          <p>Développer les déplacements et les solutions de transport à l’échelle de l’agglomération.</p>
+        </article>
+        <article class="mission">
+          <span class="mission-icon" aria-hidden="true">✳</span>
+          <h3>Services et vie locale</h3>
+          <p>Participer aux actions de proximité, notamment dans les domaines de la culture, du sport et des solidarités.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="communes">
+      <div class="territory">
+        <div>
+          <h2>26 communes, un même bassin de vie</h2>
+          <p>De Cholet à Maulévrier, chaque commune contribue à l’identité et au dynamisme du territoire.</p>
+          <p><strong>Population :</strong> 108&nbsp;379 habitants, selon le recensement 2022.</p>
+        </div>
+        <div class="communes" aria-label="Liste des communes membres">
+          <span>Bégrolles-en-Mauges</span><span>Cernusson</span><span>Chanteloup-les-Bois</span><span>Cholet</span><span>Cléré-sur-Layon</span><span>Coron</span><span>La Plaine</span><span>La Romagne</span><span>La Séguinière</span><span>La Tessoualle</span><span>Le May-sur-Èvre</span><span>Les Cerqueux</span><span>Lys-Haut-Layon</span><span>Maulévrier</span><span>Mazières-en-Mauges</span><span>Montilliers</span><span>Nuaillé</span><span>Passavant-sur-Layon</span><span>Saint-Christophe-du-Bois</span><span>Saint-Léger-sous-Cholet</span><span>Saint-Paul-du-Bois</span><span>Somloire</span><span>Toutlemonde</span><span>Trémentines</span><span>Vezins</span><span>Yzernay</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="liens">
+      <div class="contact">
+        <div>
+          <h2>En savoir plus</h2>
+          <p>Retrouvez les actualités, les services et les informations pratiques sur les sites officiels.</p>
+        </div>
+        <div class="contact-links">
+          <a href="https://www.agglo-choletais.fr" target="_blank" rel="noopener noreferrer">Site de Cholet Agglomération ↗</a>
+          <a href="https://www.cholet.fr" target="_blank" rel="noopener noreferrer">Ville de Cholet ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <aside class="sources" aria-label="Sources des informations">
+      <h2>Sources</h2>
+      <ul>
+        <li><a href="https://www.insee.fr/fr/metadonnees/geographie/intercommunalite/200071678-cholet-agglomeration" target="_blank" rel="noopener noreferrer">INSEE — Cholet Agglomération (SIREN 200071678)</a></li>
+        <li><a href="https://www.agglo-choletais.fr/content/le-territoire-de-cholet-agglomeration" target="_blank" rel="noopener noreferrer">Cholet Agglomération — Le territoire</a></li>
+        <li><a href="https://www.cholet.fr/chaines/dossier_439_vos%20elus%20-%20communaute%20agglomeration%20choletais.html" target="_blank" rel="noopener noreferrer">Ville de Cholet — Cholet Agglomération et ses élus</a></li>
+      </ul>
+      <p>La population indiquée correspond au recensement 2022. Pour les compétences et services à jour, consultez le site officiel de l’Agglomération.</p>
+    </aside>
+  </main>
+  <footer>Cholet Agglomération · Un territoire, 26 communes</footer>
+</body>
+</html>
